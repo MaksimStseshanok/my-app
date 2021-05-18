@@ -1,0 +1,74 @@
+@import '../../assets//styles/colors.scss';
+
+.card {
+  max-width: calc(25% - 15px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  margin-bottom: 20px;
+  &__cover {
+    border-radius: 6px;
+    overflow: hidden;
+
+    & img {
+      width: 100%;
+      transition: opacity 0.5s;
+    }
+  }
+  &__rate {
+    font-size: 14px;
+    font-weight: 600;
+    color: $font-color;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    top: 15px;
+    left: 15px;
+    background-color: $card__rate--bg;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    &--green {
+      border-color: $card__rate--green;
+    }
+    &--red {
+      border-color: $card__rate--red;
+    }
+    &--yellow {
+      border-color: $card__rate--yellow;
+    }
+  }
+  &__content {
+    display: block;
+    margin-top: 10px;
+    width: 100%;
+  }
+  &__title {
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: 400;
+    color: #fff;
+    margin: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+  }
+  &__category {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    & span {
+      font-size: 14px;
+      color: #f9ab00;
+      margin-right: 10px;
+      opacity: 0.8;
+    }
+  }
+}
