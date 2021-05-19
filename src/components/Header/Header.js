@@ -1,8 +1,8 @@
 import React from 'react';
 import './Header.scss';
 
-import logo from '../../assets/images/movie.svg';
-import user from '../../assets/images/user.svg';
+import logo from './movie.svg';
+import user from './user.svg';
 
 function Header() {
   return (

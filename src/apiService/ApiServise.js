@@ -1,4 +1,4 @@
-export default class ApiServise {
+class ApiServise {
   _apiBase =
     'https://api.themoviedb.org/3/movie/popular?api_key=cc0dfb7d0c7723a857d262c65d651635&language=en-US&page=';
 
@@ -9,6 +9,10 @@ export default class ApiServise {
         `Could not fetch ${this._apiBase}, received ${res.status}`
       );
     }
-    return await res.json();
+    return res.json();
   }
 }
+
+const apiService = new ApiServise();
+
+export default apiService;
