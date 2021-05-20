@@ -6,8 +6,8 @@ function MovieCard(props) {
   const { poster, rate, title, releaseDate } = props;
   const rateClass = classNames({
     card__rate: true,
-    'card__rate--green': rate > 8,
-    'card__rate--yellow': rate < 8 && rate > 6,
+    'card__rate--green': rate >= 8,
+    'card__rate--yellow': rate < 8 && rate >= 6,
     'card__rate--red': rate < 6,
   });
   return (
