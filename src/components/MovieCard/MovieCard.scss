@@ -1,0 +1,110 @@
+@import '../../assets//styles/colors.scss';
+
+.card {
+  max-width: calc(25% - 15px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  margin-bottom: 20px;
+  &__cover {
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    &:hover img {
+      opacity: 0.4;
+    }
+    &:hover .card__info {
+      opacity: 1;
+      transform: scale(1) translate(-50%, -50%);
+    }
+    & img {
+      width: 100%;
+      transition: opacity 0.3s;
+    }
+  }
+  &__info {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    background-color: $card__info;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    font-size: 32px;
+    font-weight: 700;
+    color: $card__add;
+    transition: 0.4s;
+    transform: scale(0.9) translate(-50%, -50%);
+    transition-property: opacity, background-color, color, border-color,
+      transform;
+    opacity: 0;
+    border: 6px solid $card__info-border;
+    cursor: pointer;
+  }
+  &__rate {
+    font-size: 14px;
+    font-weight: 600;
+    color: $font-color;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    top: 15px;
+    left: 15px;
+    background-color: $card__rate--bg;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    &--green {
+      border-color: $card__rate--green;
+    }
+    &--red {
+      border-color: $card__rate--red;
+    }
+    &--yellow {
+      border-color: $card__rate--yellow;
+    }
+  }
+  &__content {
+    display: block;
+    margin-top: -5px;
+    width: 100%;
+    cursor: pointer;
+    padding: 0px 10px 10px;
+    transition: 0.4s;
+    &:hover {
+      background: $card__content-hover;
+      transition: 0.4s;
+    }
+  }
+  &__title {
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: 400;
+    color: #fff;
+    margin: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+  }
+  &__category {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  &__date {
+    font-size: 14px;
+    color: #f9ab00;
+    margin-right: 10px;
+    opacity: 0.8;
+  }
+}

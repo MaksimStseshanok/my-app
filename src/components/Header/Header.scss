@@ -1,0 +1,24 @@
+@import '../../assets/styles/colors.scss';
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: $header-bg;
+  border-bottom: 1px solid $border-color;
+  z-index: 1;
+  &__row {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 15px;
+  }
+  &__logo {
+    height: 60px;
+  }
+  &__user-logo {
+    height: 40px;
+  }
+}
