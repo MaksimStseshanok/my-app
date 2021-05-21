@@ -1,9 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
 import './MovieCard.scss';
+import { withRouter } from 'react-router-dom';
 
 function MovieCard(props) {
-  const { poster, rate, title, releaseDate } = props;
+  const { id, poster, rate, title, releaseDate, history } = props;
   const rateClass = classNames({
     card__rate: true,
     'card__rate--green': rate >= 8,
@@ -17,7 +18,12 @@ function MovieCard(props) {
         <span className="card__info">+</span>
         <span className={rateClass}>{rate}</span>
       </div>
-      <div className="card__content">
+      <div
+        className="card__content"
+        onClick={() => {
+          history.push(`/movie/${id}`);
+        }}
+      >
         <h3 className="card__title">{title}</h3>
         <span className="card__date">{releaseDate.slice(0, 4)}</span>
       </div>
@@ -25,4 +31,4 @@ function MovieCard(props) {
   );
 }
 
-export default MovieCard;
+export default withRouter(MovieCard);

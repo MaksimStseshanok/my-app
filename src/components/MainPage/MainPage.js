@@ -1,14 +1,8 @@
 import React from 'react';
 import MovieList from '../MovieList/MovieList';
-import Header from './../Header/Header';
 
 function MainPage() {
-  return (
-    <>
-      <Header />
-      <MovieList />
-    </>
-  );
+  return <MovieList />;
 }
 
 export default MainPage;
