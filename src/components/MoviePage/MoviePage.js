@@ -2,18 +2,22 @@ import React, { useEffect, useState } from 'react';
 import apiService from '../../apiService/ApiServise';
 import Spinner from '../Spinner/Spinner';
 import './MoviePage.scss';
+import { useParams } from 'react-router-dom';
 
-function MoviePage({ movieId }) {
+function MoviePage() {
+  const { id } = useParams();
   const [movie, setMovie] = useState();
+
   useEffect(() => {
-    apiService.getInfo(movieId).then((movie) => {
+    apiService.getInfo(id).then((movie) => {
       setMovie(movie);
     });
-  }, [movieId]);
+  }, [id]);
 
   if (!movie) {
     return <Spinner />;
   }
+
   return (
     <div className="movie">
       <h1 className="movie__title">

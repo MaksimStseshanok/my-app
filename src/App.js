@@ -11,14 +11,9 @@ function App() {
     <Router>
       <Header />
       <Switch>
-        <Route
-          exact
-          path="/movie/:id"
-          render={({ match }) => {
-            const { id } = match.params;
-            return <MoviePage movieId={id} />;
-          }}
-        />
+        <Route path="/movie/:id">
+          <MoviePage />;
+        </Route>
         <Route exact path="/" component={MainPage} />
       </Switch>
     </Router>

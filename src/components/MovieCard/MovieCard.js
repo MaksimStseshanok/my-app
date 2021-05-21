@@ -1,10 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
 import './MovieCard.scss';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 function MovieCard(props) {
-  const { id, poster, rate, title, releaseDate, history } = props;
+  const history = useHistory();
+  const { id, poster, rate, title, releaseDate } = props;
   const rateClass = classNames({
     card__rate: true,
     'card__rate--green': rate >= 8,
@@ -31,4 +32,4 @@ function MovieCard(props) {
   );
 }
 
-export default withRouter(MovieCard);
+export default MovieCard;

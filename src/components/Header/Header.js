@@ -1,20 +1,18 @@
 import React from 'react';
 import './Header.scss';
-import { withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import logo from './movie.svg';
 import user from './user.svg';
 
-function Header({ history }) {
+function Header() {
+  // const history = useHistory();
   return (
-    <header
-      className="header"
-      onClick={() => {
-        history.push(`/`);
-      }}
-    >
+    <header className="header">
       <div className="header__row">
-        <img src={logo} alt="logo" className="header__logo" />
+        <Link to="/">
+          <img src={logo} alt="logo" className="header__logo" />
+        </Link>
         <h1>The movie app</h1>
         <img src={user} alt="logo" className="header__user-logo" />
       </div>
@@ -22,4 +20,4 @@ function Header({ history }) {
   );
 }
 
-export default withRouter(Header);
+export default Header;
