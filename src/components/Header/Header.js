@@ -6,7 +6,6 @@ import logo from './movie.svg';
 import user from './user.svg';
 
 function Header() {
-  // const history = useHistory();
   return (
     <header className="header">
       <div className="header__row">

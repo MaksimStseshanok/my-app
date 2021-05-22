@@ -12,7 +12,7 @@ function App() {
       <Header />
       <Switch>
         <Route path="/movie/:id">
-          <MoviePage />;
+          <MoviePage />
         </Route>
         <Route exact path="/" component={MainPage} />
       </Switch>
