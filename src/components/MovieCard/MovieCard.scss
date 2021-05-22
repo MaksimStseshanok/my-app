@@ -2,12 +2,14 @@
 
 .card {
   max-width: calc(25% - 15px);
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   position: relative;
   margin-bottom: 20px;
   &__cover {
+    flex-grow: 1;
     position: relative;
     border-radius: 6px;
     overflow: hidden;
@@ -19,6 +21,7 @@
       transform: scale(1) translate(-50%, -50%);
     }
     & img {
+      height: 100%;
       width: 100%;
       transition: opacity 0.3s;
     }
@@ -44,6 +47,9 @@
     opacity: 0;
     border: 6px solid $card__info-border;
     cursor: pointer;
+    &:hover {
+      border-color: $font-color;
+    }
   }
   &__rate {
     font-size: 14px;
@@ -73,7 +79,6 @@
   }
   &__content {
     display: block;
-    margin-top: -5px;
     width: 100%;
     cursor: pointer;
     padding: 0px 10px 10px;
@@ -87,7 +92,7 @@
     font-size: 18px;
     line-height: 30px;
     font-weight: 400;
-    color: #fff;
+    color: $font-color;
     margin: 0;
     overflow: hidden;
     white-space: nowrap;

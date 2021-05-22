@@ -3,6 +3,7 @@ import apiService from '../../apiService/ApiServise';
 import Spinner from '../Spinner/Spinner';
 import './MoviePage.scss';
 import { useParams } from 'react-router-dom';
+import Poster from '../Poster/Poster';
 
 function MoviePage() {
   const { id } = useParams();
@@ -26,11 +27,7 @@ function MoviePage() {
       </h1>
       <div className="movie__wrapper">
         <div className="movie__picture">
-          <img
-            className="movie__img"
-            src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-            alt={movie.title}
-          />
+          <Poster poster={movie.backdrop_path} title={movie.title} />
         </div>
 
         <ul className="movie__details">

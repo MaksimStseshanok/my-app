@@ -1,20 +1,36 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import './MovieList.scss';
 import MovieCard from '../MovieCard/MovieCard';
 import apiService from '../../apiService/ApiServise';
 import Spinner from '../Spinner/Spinner';
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
 function MovieList() {
+  const { title } = useParams();
   const [movieList, setMovieList] = useState([]);
+  const [searchResult, setSearchResult] = useState(false);
 
   useEffect(() => {
-    apiService.getInfo('popular').then((movies) => {
-      setMovieList(movies.results);
-    });
-  }, []);
+    if (!title) {
+      apiService.getInfo('popular').then((data) => {
+        setMovieList(data.results);
+      });
+    } else {
+      apiService.getMovieByTitle(title).then((data) => {
+        data.results.length
+          ? setMovieList(data.results)
+          : setSearchResult(true);
+      });
+    }
+  }, [title]);
 
-  if (!movieList.length) {
+  if (!movieList.length && !searchResult) {
     return <Spinner />;
+  }
+
+  if (searchResult) {
+    return <NotFoundPage searchValue={title} />;
   }
 
   return (
