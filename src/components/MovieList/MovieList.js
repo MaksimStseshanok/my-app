@@ -9,27 +9,27 @@ import NotFoundPage from '../NotFoundPage/NotFoundPage';
 function MovieList() {
   const { title } = useParams();
   const [movieList, setMovieList] = useState([]);
-  const [searchResult, setSearchResult] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!title) {
       apiService.getInfo('popular').then((data) => {
         setMovieList(data.results);
+        setLoading(false);
       });
     } else {
       apiService.getMovieByTitle(title).then((data) => {
-        data.results.length
-          ? setMovieList(data.results)
-          : setSearchResult(true);
+        setMovieList(data.results);
+        setLoading(false);
       });
     }
   }, [title]);
 
-  if (!movieList.length && !searchResult) {
+  if (loading) {
     return <Spinner />;
   }
 
-  if (searchResult) {
+  if (!movieList.length) {
     return <NotFoundPage searchValue={title} />;
   }
 
