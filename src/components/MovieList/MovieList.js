@@ -15,7 +15,7 @@ function MovieList() {
     if (!title) {
       setLoading(true);
       apiService
-        .getInfo('popular')
+        .getInfo('opular')
         .then((data) => {
           setMovieList(data.results);
         })
