@@ -17,9 +17,9 @@
   }
   &__picture {
     width: 50%;
-  }
-  &__img {
-    width: 100%;
+    & > img {
+      max-width: 480px;
+    }
   }
   &__details {
     line-height: 26px;

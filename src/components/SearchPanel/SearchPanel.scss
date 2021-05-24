@@ -1,0 +1,34 @@
+@import '../../assets/styles/colors.scss';
+
+.search-panel {
+  position: relative;
+  &__input {
+    height: 40px;
+    border-radius: 6px;
+    background: $body-bg;
+    border: 2px solid transparent;
+    font-size: 16px;
+    color: $font-color;
+    appearance: none;
+    box-shadow: none;
+    transition: 0.4s;
+    padding: 0 45px 0px 15px;
+    &:focus {
+      border-color: $search__border-color;
+      outline: none;
+    }
+  }
+  &__button {
+    position: absolute;
+    right: 5px;
+    height: 100%;
+    color: $font-color;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    &:hover .material-icons {
+      color: $search__icon-color;
+      transition: 0.4s;
+    }
+  }
+}
