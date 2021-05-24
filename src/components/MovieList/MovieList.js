@@ -9,19 +9,27 @@ import NotFoundPage from '../NotFoundPage/NotFoundPage';
 function MovieList() {
   const { title } = useParams();
   const [movieList, setMovieList] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (!title) {
-      apiService.getInfo('popular').then((data) => {
-        setMovieList(data.results);
-        setLoading(false);
-      });
+      setLoading(true);
+      apiService
+        .getInfo('popular')
+        .then((data) => {
+          setMovieList(data.results);
+        })
+        .catch((error) => console.error(error))
+        .finally(() => setLoading(false));
     } else {
-      apiService.getMovieByTitle(title).then((data) => {
-        setMovieList(data.results);
-        setLoading(false);
-      });
+      setLoading(true);
+      apiService
+        .getMovieByTitle(title)
+        .then((data) => {
+          setMovieList(data.results);
+        })
+        .catch((error) => console.error(error))
+        .finally(() => setLoading(false));
     }
   }, [title]);
 
