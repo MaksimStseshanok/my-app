@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import apiService from '../../apiService/ApiServise';
-import Spinner from '../Spinner/Spinner';
-import './MoviePage.scss';
 import { useParams } from 'react-router-dom';
-import Poster from '../Poster/Poster';
+import apiService from '../../../apiService/ApiServise';
+import Spinner from '../../common/Spinner/Spinner';
+import Poster from '../../common/Poster/Poster';
+import './MoviePage.scss';
 
 function MoviePage() {
   const { id } = useParams();

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import classNames from 'classnames';
 import './MovieCard.scss';
+import classNames from 'classnames';
 import Poster from '../Poster/Poster';
 
 function MovieCard(props) {

@@ -1,11 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-// import { Counter } from './features/counter/Counter';
 import './App.scss';
-import Header from './components/Header/Header';
-import MainPage from './components/MainPage/MainPage';
-import MoviePage from './components/MoviePage/MoviePage';
-import MovieList from './components/MovieList/MovieList';
+import Header from './components/common/Header/Header';
+import MainPage from './components/pages/MainPage/MainPage';
+import MoviePage from './components/pages/MoviePage/MoviePage';
+import MovieList from './components/common/MovieList/MovieList';
+import SignInPage from './components/pages/SignInPage/SignInPage';
+import SignUpPage from './components/pages/SignUpPage/SignUpPage';
 
 function App() {
   return (
@@ -17,6 +18,12 @@ function App() {
         </Route>
         <Route path="/search/:title">
           <MovieList />
+        </Route>
+        <Route path="/signin">
+          <SignInPage />
+        </Route>
+        <Route path="/signup">
+          <SignUpPage />
         </Route>
         <Route exact path="/" component={MainPage} />
       </Switch>
