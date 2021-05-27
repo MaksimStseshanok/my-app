@@ -16,12 +16,12 @@ function SignUpPage() {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     const storage = JSON.parse(localStorage.getItem('user'));
-    if (storage?.name !== name) {
+    if (storage?.name !== name.value) {
       const user = {
         name: name.value,
         email: email.value,
         password: password.value,
-        isLoged: true,
+        isLogged: true,
       };
       localStorage.setItem('user', JSON.stringify(user));
       dispatch(signin(user));

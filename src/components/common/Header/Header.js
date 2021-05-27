@@ -13,7 +13,7 @@ function Header() {
 
   const onClickSignout = () => {
     const user = JSON.parse(localStorage.getItem('user'));
-    user.isLoged = false;
+    user.isLogged = false;
     localStorage.setItem('user', JSON.stringify(user));
     dispatch(signout());
   };
@@ -26,7 +26,7 @@ function Header() {
         </Link>
         <h1>The movie app</h1>
         <SearchPanel />
-        {user?.isLoged ? (
+        {user?.isLogged ? (
           <>
             <span>Favorites</span>
             <span>History</span>

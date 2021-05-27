@@ -15,7 +15,7 @@ function SignInPage() {
     event.preventDefault();
     const storage = JSON.parse(localStorage.getItem('user'));
     if (storage?.name === name.value && storage?.password === password.value) {
-      storage.isLoged = true;
+      storage.isLogged = true;
       localStorage.setItem('user', JSON.stringify(storage));
       dispatch(signin(storage));
       history.push('/');

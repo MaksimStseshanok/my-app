@@ -9,16 +9,14 @@ export const useValidation = (value, validations) => {
     for (const validation in validations) {
       switch (validation) {
         case 'isEmpty':
-          value ? setEmpty(false) : setEmpty(true);
+          setEmpty(!value);
           break;
         case 'minLength':
-          value.length < validations[validation]
-            ? setMinLengthError(true)
-            : setMinLengthError(false);
+          setMinLengthError(value.length < validations[validation]);
           break;
         case 'emailError':
           const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-          isEmail ? setEmailError(false) : setEmailError(true);
+          setEmailError(!isEmail);
           break;
         default:
           break;
