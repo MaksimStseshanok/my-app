@@ -1,4 +1,4 @@
-@import '../../assets/styles/colors.scss';
+@import '../../../assets/styles/colors.scss';
 
 .search-panel {
   position: relative;
@@ -26,9 +26,5 @@
     background: transparent;
     border: none;
     cursor: pointer;
-    &:hover .material-icons {
-      color: $search__icon-color;
-      transition: 0.4s;
-    }
   }
 }

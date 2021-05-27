@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import './MovieList.scss';
+import { useParams } from 'react-router-dom';
 import MovieCard from '../MovieCard/MovieCard';
-import apiService from '../../apiService/ApiServise';
+import apiService from '../../../apiService/ApiServise';
 import Spinner from '../Spinner/Spinner';
-import NotFoundPage from '../NotFoundPage/NotFoundPage';
+import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
 
 function MovieList() {
   const { title } = useParams();

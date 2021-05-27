@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+a {
+  color: $font-color;
+}
+
 body {
   margin: 0;
   font-family: 'Rubik', sans-serif, -apple-system, BlinkMacSystemFont,
@@ -19,4 +23,12 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.material-icons {
+  cursor: pointer;
+  &:hover {
+    color: $search__icon-color;
+    transition: 0.4s;
+  }
 }
