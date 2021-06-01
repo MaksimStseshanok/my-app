@@ -6,16 +6,34 @@ export const userSlice = createSlice({
     user: JSON.parse(localStorage.getItem('user')),
   },
   reducers: {
-    signin: (state, action) => {
+    signup: (state, action) => {
       state.user = action.payload;
+      localStorage.setItem('user', JSON.stringify(action.payload));
+    },
+    signin: (state) => {
+      state.user.isLogged = true;
+      localStorage.setItem('user', JSON.stringify(state.user));
     },
     signout: (state) => {
-      state.user = null;
+      state.user.isLogged = false;
+      localStorage.setItem('user', JSON.stringify(state.user));
+    },
+    addFavorites: (state, action) => {
+      state.user.favorites.push(action.payload);
+      localStorage.setItem('user', JSON.stringify(state.user));
+    },
+    removeFavorites: (state, action) => {
+      const index = state.user.favorites.findIndex(
+        (movie) => movie.id === action.payload
+      );
+      state.user.favorites.splice(index, 1);
+      localStorage.setItem('user', JSON.stringify(state.user));
     },
   },
 });
 
-export const { signin, signout } = userSlice.actions;
+export const { signup, signin, signout, addFavorites, removeFavorites } =
+  userSlice.actions;
 
 export const selectUser = (state) => state.user;
 

@@ -2,8 +2,8 @@ import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import './SignUpPage.scss';
 
-import { useDispatch } from 'react-redux';
-import { signin } from '../../../features/userSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { signup, selectUser } from '../../../features/userSlice';
 import { useInput } from '../../../hooks/useInput';
 
 function SignUpPage() {
@@ -12,19 +12,20 @@ function SignUpPage() {
   const password = useInput('', { minLength: 5 });
   const history = useHistory();
   const dispatch = useDispatch();
+  const user = useSelector(selectUser);
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    const storage = JSON.parse(localStorage.getItem('user'));
-    if (storage?.name !== name.value) {
+    if (user?.name !== name.value) {
       const user = {
         name: name.value,
         email: email.value,
         password: password.value,
+        favorites: [],
+        history: [],
         isLogged: true,
       };
-      localStorage.setItem('user', JSON.stringify(user));
-      dispatch(signin(user));
+      dispatch(signup(user));
       history.push('/');
     } else {
       return alert('Name is taken');

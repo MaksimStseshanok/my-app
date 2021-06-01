@@ -1,6 +1,6 @@
 import React from 'react';
 import './Header.scss';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import SearchPanel from '../SearchPanel/SearchPanel';
 
 import logo from './movie.svg';
@@ -8,13 +8,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectUser, signout } from '../../../features/userSlice';
 
 function Header() {
+  const history = useHistory();
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
 
   const onClickSignout = () => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    user.isLogged = false;
-    localStorage.setItem('user', JSON.stringify(user));
     dispatch(signout());
   };
 
@@ -28,8 +26,13 @@ function Header() {
         <SearchPanel />
         {user?.isLogged ? (
           <>
-            <span>Favorites</span>
-            <span>History</span>
+            <span
+              className="header__favorites"
+              onClick={() => history.push('/favorites')}
+            >
+              Favorites
+            </span>
+            <span className="header__history">History</span>
             <span onClick={onClickSignout} className="material-icons">
               logout
             </span>
