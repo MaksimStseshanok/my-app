@@ -72,7 +72,9 @@ function MovieList() {
             release_date: date,
           } = movie;
 
-          const favoriteMovie = user.favorites.find((movie) => movie.id === id);
+          const favoriteMovie = user?.favorites.find(
+            (movie) => movie.id === id
+          );
 
           return (
             <MovieCard
