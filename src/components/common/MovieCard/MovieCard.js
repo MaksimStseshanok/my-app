@@ -14,9 +14,8 @@ function MovieCard(props) {
     poster,
     rate,
     title,
-    releaseDate = '...',
-    clickHandler,
-    btn,
+    releaseDate = 'n/a',
+    favoriteClickHandler,
   } = props;
 
   const rateClass = classNames({
@@ -26,14 +25,19 @@ function MovieCard(props) {
     'card__rate--red': rate < 6,
   });
 
+  const favoriteMovie = user?.favorites[id];
+
   return (
     <div className="card">
       <div className="card__cover">
         <Poster poster={poster} title={title} />
         {user?.isLogged && (
-          <span onClick={() => clickHandler(id)} className="card__info">
-            {btn}
-          </span>
+          <button
+            onClick={() => favoriteClickHandler(id)}
+            className="card__info"
+          >
+            {favoriteMovie ? '-' : '+'}
+          </button>
         )}
         <span className={rateClass}>{rate}</span>
       </div>

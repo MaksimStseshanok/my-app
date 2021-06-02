@@ -21,9 +21,6 @@ function SignUpPage() {
         name: name.value,
         email: email.value,
         password: password.value,
-        favorites: [],
-        history: [],
-        isLogged: true,
       };
       dispatch(signup(user));
       history.push('/');

@@ -12,15 +12,15 @@ import {
 } from '../../../features/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
-function MovieList() {
-  const { title, favorites } = useParams();
+function MovieList({ favoritesPage }) {
+  const { title } = useParams();
   const [movieList, setMovieList] = useState([]);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
 
   useEffect(() => {
-    if (!title && !favorites) {
+    if (!title && !favoritesPage) {
       setLoading(true);
       apiService
         .getInfo('popular')
@@ -38,18 +38,18 @@ function MovieList() {
         })
         .catch((error) => console.error(error))
         .finally(() => setLoading(false));
-    } else if (favorites) {
-      setMovieList(user.favorites);
+    } else if (favoritesPage) {
+      setMovieList(Object.values(user.favorites));
     }
-  }, [title, favorites, user]);
+  }, [title, favoritesPage, user]);
 
-  const getMovie = (id) => {
-    if (user.favorites.find((movie) => movie.id === id)) {
+  const checkFavorites = (id) => {
+    if (user.favorites[id]) {
       dispatch(removeFavorites(id));
-      return;
+    } else {
+      const movie = movieList.find((movie) => movie.id === id);
+      dispatch(addFavorites(movie));
     }
-    const movie = movieList.find((movie) => movie.id === id);
-    dispatch(addFavorites(movie));
   };
 
   if (loading) {
@@ -72,10 +72,6 @@ function MovieList() {
             release_date: date,
           } = movie;
 
-          const favoriteMovie = user?.favorites.find(
-            (movie) => movie.id === id
-          );
-
           return (
             <MovieCard
               key={id}
@@ -84,8 +80,7 @@ function MovieList() {
               title={title}
               releaseDate={date}
               id={id}
-              clickHandler={getMovie}
-              btn={favoriteMovie ? '-' : '+'}
+              favoriteClickHandler={checkFavorites}
             />
           );
         })}

@@ -29,9 +29,7 @@ function App() {
         <Route path="/signup">
           <SignUpPage />
         </Route>
-        <Route path="/:favorites">
-          <FavoritesPage />
-        </Route>
+        <Route path="/favorites" component={FavoritesPage} />
         <Route exact path="/" component={MainPage} />
       </Switch>
     </Router>

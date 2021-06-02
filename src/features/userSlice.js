@@ -7,8 +7,13 @@ export const userSlice = createSlice({
   },
   reducers: {
     signup: (state, action) => {
-      state.user = action.payload;
-      localStorage.setItem('user', JSON.stringify(action.payload));
+      const defaultSettings = {
+        favorites: {},
+        history: [],
+        isLogged: true,
+      };
+      state.user = { ...action.payload, ...defaultSettings };
+      localStorage.setItem('user', JSON.stringify(state.user));
     },
     signin: (state) => {
       state.user.isLogged = true;
@@ -19,14 +24,13 @@ export const userSlice = createSlice({
       localStorage.setItem('user', JSON.stringify(state.user));
     },
     addFavorites: (state, action) => {
-      state.user.favorites.push(action.payload);
+      const id = action.payload.id;
+      state.user.favorites[id] = action.payload;
       localStorage.setItem('user', JSON.stringify(state.user));
     },
     removeFavorites: (state, action) => {
-      const index = state.user.favorites.findIndex(
-        (movie) => movie.id === action.payload
-      );
-      state.user.favorites.splice(index, 1);
+      const id = action.payload;
+      delete state.user.favorites[id];
       localStorage.setItem('user', JSON.stringify(state.user));
     },
   },
