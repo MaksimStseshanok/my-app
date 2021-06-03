@@ -25,7 +25,7 @@ function MovieCard(props) {
     'card__rate--red': rate < 6,
   });
 
-  const favoriteMovie = user?.favorites[id];
+  const isFavorite = Boolean(user?.favorites[id]);
 
   return (
     <div className="card">
@@ -36,7 +36,7 @@ function MovieCard(props) {
             onClick={() => favoriteClickHandler(id)}
             className="card__info"
           >
-            {favoriteMovie ? '-' : '+'}
+            {isFavorite ? '-' : '+'}
           </button>
         )}
         <span className={rateClass}>{rate}</span>

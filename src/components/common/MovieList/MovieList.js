@@ -43,7 +43,7 @@ function MovieList({ favoritesPage }) {
     }
   }, [title, favoritesPage, user]);
 
-  const checkFavorites = (id) => {
+  const favoriteClickHandler = (id) => {
     if (user.favorites[id]) {
       dispatch(removeFavorites(id));
     } else {
@@ -80,7 +80,7 @@ function MovieList({ favoritesPage }) {
               title={title}
               releaseDate={date}
               id={id}
-              favoriteClickHandler={checkFavorites}
+              favoriteClickHandler={favoriteClickHandler}
             />
           );
         })}

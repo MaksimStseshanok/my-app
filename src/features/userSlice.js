@@ -7,12 +7,12 @@ export const userSlice = createSlice({
   },
   reducers: {
     signup: (state, action) => {
-      const defaultSettings = {
+      const defaultUserProps = {
         favorites: {},
         history: [],
         isLogged: true,
       };
-      state.user = { ...action.payload, ...defaultSettings };
+      state.user = { ...action.payload, ...defaultUserProps };
       localStorage.setItem('user', JSON.stringify(state.user));
     },
     signin: (state) => {
