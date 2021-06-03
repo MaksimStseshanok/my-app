@@ -12,9 +12,6 @@ function Header() {
   const dispatch = useDispatch();
 
   const onClickSignout = () => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    user.isLogged = false;
-    localStorage.setItem('user', JSON.stringify(user));
     dispatch(signout());
   };
 
@@ -28,8 +25,10 @@ function Header() {
         <SearchPanel />
         {user?.isLogged ? (
           <>
-            <span>Favorites</span>
-            <span>History</span>
+            <Link to="/favorites">
+              <span className="header__favorites">Favorites</span>
+            </Link>
+            <span className="header__history">History</span>
             <span onClick={onClickSignout} className="material-icons">
               logout
             </span>

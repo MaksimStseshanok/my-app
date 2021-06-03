@@ -1,7 +1,7 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-import { signin } from '../../../features/userSlice';
+import { signin, selectUser } from '../../../features/userSlice';
 import { useInput } from '../../../hooks/useInput';
 import './SignInPage.scss';
 
@@ -9,15 +9,13 @@ function SignInPage() {
   const name = useInput('', { isEmpty: true });
   const password = useInput('', { minLength: 5 });
   const history = useHistory();
+  const user = useSelector(selectUser);
   const dispatch = useDispatch();
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    const storage = JSON.parse(localStorage.getItem('user'));
-    if (storage?.name === name.value && storage?.password === password.value) {
-      storage.isLogged = true;
-      localStorage.setItem('user', JSON.stringify(storage));
-      dispatch(signin(storage));
+    if (user?.name === name.value && user?.password === password.value) {
+      dispatch(signin());
       history.push('/');
     } else {
       return alert('User not found, or password not correct!');

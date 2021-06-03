@@ -3,10 +3,20 @@ import { useHistory } from 'react-router-dom';
 import './MovieCard.scss';
 import classNames from 'classnames';
 import Poster from '../Poster/Poster';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../../features/userSlice';
 
 function MovieCard(props) {
   const history = useHistory();
-  const { id, poster, rate, title, releaseDate = '...' } = props;
+  const user = useSelector(selectUser);
+  const {
+    id,
+    poster,
+    rate,
+    title,
+    releaseDate = 'n/a',
+    favoriteClickHandler,
+  } = props;
 
   const rateClass = classNames({
     card__rate: true,
@@ -15,11 +25,20 @@ function MovieCard(props) {
     'card__rate--red': rate < 6,
   });
 
+  const isFavorite = Boolean(user?.favorites[id]);
+
   return (
     <div className="card">
       <div className="card__cover">
         <Poster poster={poster} title={title} />
-        <span className="card__info">+</span>
+        {user?.isLogged && (
+          <button
+            onClick={() => favoriteClickHandler(id)}
+            className="card__info"
+          >
+            {isFavorite ? '-' : '+'}
+          </button>
+        )}
         <span className={rateClass}>{rate}</span>
       </div>
       <div

@@ -23,4 +23,13 @@
   &__user-logo {
     height: 40px;
   }
+  &__favorites,
+  &__history {
+    font-size: 20px;
+    padding: 3px;
+    cursor: pointer;
+    &:hover {
+      color: $card__add;
+    }
+  }
 }

@@ -7,6 +7,7 @@ import {
   MoviePage,
   SignInPage,
   SignUpPage,
+  FavoritesPage,
 } from './components/pages';
 
 import { Header, MovieList } from './components/common';
@@ -28,6 +29,7 @@ function App() {
         <Route path="/signup">
           <SignUpPage />
         </Route>
+        <Route path="/favorites" component={FavoritesPage} />
         <Route exact path="/" component={MainPage} />
       </Switch>
     </Router>
